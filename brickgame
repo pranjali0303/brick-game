@@ -54,6 +54,36 @@ void setcursor(bool visible,DWORD size) //set bool visible=0 - invisible, bool v
      }
      
      void drawBorder(){
+     gotoxy(0,0);cout<<"-----------------------------------------------------------------------";
+     gotoxy(0,SCREEN_HEIGHT);cout<<"---------------------------------------------------------------------------------";
      
+     for(int i=0; i<SCREEN_HEIGHT; i++{
+         gotoxy(0,i); cout<<"|";
+         gotoxy(SCREEN_WIDTH,i); cout<<"|";
+         }
+    }
+    
+    void drawBricks(){
+         for( int i=0; i<24; i++){
+              if( visibleBricks[i] ==1){
+                   gotoxy(bricks[i][1], bricks[i][0];
+                   cout<<"+-+-+-+-";
+                   }
+             }
+    }
+    
+    void ballHitSlider(){
+         if(ballPos[1]>=sliderPos[1] &&ballPos[1]<=sliderPos[1]+8){
+            if( ballPos[0] == sliderPos[0]-1 ){
+                 if(dir == 3 )
+                     dir =2;
+                 else if( dir == 4 )
+                      dir = 1;
+                      }
+             }
+    } 
+    
+                 
+                   
 
 
