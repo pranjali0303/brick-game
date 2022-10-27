@@ -1,1 +1,23 @@
 #include<iostream>
+#include<conio.h>
+#include<dos.h>
+#include<stdlib.h>
+#include<string.h>
+#include<windows.h>
+#include<time.h>
+
+#define SCREEN_WIDTH 52
+#define SCREEN_HEIGHT 20
+
+#define MINX 2
+#define MINY 2
+#define MAXX 49
+#define MAXY 19
+
+using namespace std;
+
+HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+COORD CursorPosition;
+
+int bricks[24][2] = {
+                      {2,7},{2,12},{2,17},{2,22},{2,27},{2,32},{2,37},{2,42}
