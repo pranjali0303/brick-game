@@ -101,6 +101,9 @@ void play(){
 		system("cls");
 		drawBricks();
 		drawBorder();
+		
+		gotoxy(sliderPos[1],sliderPos[0]);
+		cout<<"+-+-+-+-+";
 
 		gotoxy(ballPos[1],ballPos[0]); cout<<"0"; if(kbhit()){
 			char ch=getch();
@@ -119,6 +122,7 @@ void play(){
 				break;
 			}
 		}
+		
 		if(starBall==1){
 			if(dir==1){//TOP RIGHT
 				ballPos[0]=ballPos[0]-1;
