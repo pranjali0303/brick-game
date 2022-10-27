@@ -121,7 +121,50 @@ void play(){
 		}
 		if(starBall==1){
 			if(dir==1){//TOP RIGHT
-				ballPos[0]=ball
+				ballPos[0]=ballPos[0]-1;
+				ballPos[1]=ballPos[1]+2;
+				if(ballPos[1]>MAXX){
+					dir=2;
+				}
+				else if(ballPos[0]<MINY){
+					dir=4;
+				}
+			}
+			else if(dir==2){//TOP LEFT
+				ballPos[0]=ballPos[0]-1;
+				ballPos[1]=ballPos[1]-2;
+				if(ballPos[0]<MINY){
+					dir=3;
+				}
+				else if(ballPos[1]<MINX){
+					dir=1;
+				}
+			}
+			else if(dir==3){//BOTTOM LEFT
+				ballPos[0]=ballPos[0]+1;
+				ballPos[1]=ballPos[1]-2;
+				
+				if(ballPos[0]>MAXY){
+					lose=1;
+					break;
+				}
+				else if(ballPos[1]<MINX){
+					dir=4;
+				}
+			}
+			else if(dir==4){//BOTTOM RIGHT
+				ballPos[0]=ballPos[0]+1;
+				ballPos[1]=ballPos[1]+2;
+				if(ballPos[1]>MAXX){
+					dir=3;
+				}
+				else if(ballPos[0]>MAXY){
+					lose=1;
+					break;
+				}
+			}
+					
+				
                  
                    
 
