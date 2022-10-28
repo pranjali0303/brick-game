@@ -21,12 +21,12 @@ COORD CursorPosition;
 
 int bricks[24][2] = {
                       {2,7},{2,12},{2,17},{2,22},{2,27},{2,32},{2,37},{2,42},
-                      {4,7},{4,12},{4,17},{4,22},{4,27},{4,32},{4,37},{4,42}
+                      {4,7},{4,12},{4,17},{4,22},{4,27},{4,32},{4,37},{4,42},
                       {6,7},{6,12},{6,17},{6,22},{6,27},{6,32},{6,37},{6,42}
                       };
 
 int visibleBricks[24]={1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1,};
-int slidePos[2]={18,22};
+int sliderPos[2]={18,22};
 int ballPos[2]={17,26};
 int startBall=0;
 int dir=1; //1-TopRight, 2-TopLeft, 3-BottomLeft, 4-BottomRight
@@ -52,41 +52,41 @@ void setcursor(bool visible,DWORD size) //set bool visible=0 - invisible, bool v
      lpCursor.dwSize = size;
      SetConsoleCursorInfo(console,&lpCursor);
      }
-     
+
      void drawBorder(){
      gotoxy(0,0);cout<<"-----------------------------------------------------------------------";
      gotoxy(0,SCREEN_HEIGHT);cout<<"---------------------------------------------------------------------------------";
-     
-     for(int i=0; i<SCREEN_HEIGHT; i++{
+
+     for(int i=0; i<SCREEN_HEIGHT; i++){
          gotoxy(0,i); cout<<"|";
          gotoxy(SCREEN_WIDTH,i); cout<<"|";
          }
     }
-    
+
     void drawBricks(){
          for( int i=0; i<24; i++){
               if( visibleBricks[i] ==1){
-                   gotoxy(bricks[i][1], bricks[i][0];
+                   gotoxy(bricks[i][1], bricks[i][0]);
                    cout<<"+-+-+-+-";
                    }
              }
     }
-    
+
     void ballHitSlider(){
          if(ballPos[1]>=sliderPos[1] &&ballPos[1]<=sliderPos[1]+8){
             if( ballPos[0] == sliderPos[0]-1 ){
-                 if(dir == 3 )
+                 if(dir ==3 )
                      dir =2;
                  else if( dir == 4 )
                       dir = 1;
                       }
              }
-    } 
+    }
 
-void balHitBrick(){
+void ballHitBrick(){
 	for( int i=0; i<24; i++){
 		if(visibleBricks[i]==1){
-			if(ballPos[1]>==bricks[i][1] && ballPos[1]<=bricks[i][1]+8){
+			if(ballPos[1]>=bricks[i][1] && ballPos[1]<=bricks[i][1]+8){
 				if( ballPos[0]==bricks[i][0]){
 					visibleBricks[i]=0;
 					bricksLeft--;
@@ -101,7 +101,7 @@ void play(){
 		system("cls");
 		drawBricks();
 		drawBorder();
-		
+
 		gotoxy(sliderPos[1],sliderPos[0]);
 		cout<<"+-+-+-+-+";
 
@@ -122,8 +122,8 @@ void play(){
 				break;
 			}
 		}
-		
-		if(starBall==1){
+
+		if( startBall == 1){
 			if(dir==1){//TOP RIGHT
 				ballPos[0]=ballPos[0]-1;
 				ballPos[1]=ballPos[1]+2;
@@ -147,7 +147,7 @@ void play(){
 			else if(dir==3){//BOTTOM LEFT
 				ballPos[0]=ballPos[0]+1;
 				ballPos[1]=ballPos[1]-2;
-				
+
 				if(ballPos[0]>MAXY){
 					lose=1;
 					break;
@@ -167,44 +167,44 @@ void play(){
 					break;
 				}
 			}
-			
+
 			ballHitSlider();
 			}
-			
+
 			ballHitBrick();
-			
+
 			if(bricksLeft == 0){
 			win = 1;
 			break;
 			}
-			
+
 			Sleep(30);
 		}
-		
+
 		if(lose==1){
 		 system("cls");
-		 
+
 		 gotoxy(10,5); cout<<"----------------------";
 		 gotoxy(10,6); cout<<"|     YOU LOST       |";
 		 gotoxy(10,7); cout<<"----------------------";
-		 
+
 		gotoxy(10,9); cout<<"Press any key to go back to Menu.";
 		getch();
 		}
-		
+
 		if( win == 1){
 		system("cls");
 		gotoxy(10,5); cout<<"----------------------";
 		 gotoxy(10,6); cout<<"|     YOU WIN        |";
 		 gotoxy(10,7); cout<<"----------------------";
-			
+
 		gotoxy(10,9); cout<<"Press any key to go back to Menu.";
 		getch();
-		}	
-	     }  
-	     
-	     void instruction(){
-	     
+		}
+	     }
+
+	     void instructions(){
+
 	     system("cls");
 	     cout<<"Instructions";
 	     cout<<"\n--------------";
@@ -214,11 +214,11 @@ void play(){
 	     cout<<"\n\nPress any key to go back to menu";
 	     getch();
 	  }
-	  
+
 	  int main()
 	  {
 	  setcursor(0,0);
-	  
+
 	  do{
 	  system("cls");
 	         gotoxy(10,5); cout<<"----------------------";
@@ -229,18 +229,19 @@ void play(){
                  gotoxy(10,11); cout<<"3. Quit";
 		 gotoxy(10,13); cout<<"Select option: ";
 		 char op = getche();
-		 
+
 		 if(op=='1') play();
-		 else if(op=='2') instructions();'
+		 else if(op=='2') instructions();
 		 else if(op=='3') exit(0);
-		 
+
 		 }while(1);
-		 
+
 		 play();
-		 
-		 cout<<end1<<end1;
+
+		 cout<<endl<<endl;
 		 return 0;
 		 }
+
                  
                    
 
